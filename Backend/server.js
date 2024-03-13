@@ -21,13 +21,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-//cors
-const corsOptions = {
-  origin: "http://localhost:3000",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 //connect to database
 connectToDb();
