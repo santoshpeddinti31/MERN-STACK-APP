@@ -12,7 +12,6 @@ const todosController = require("./controllers/controller.js");
 const usersController = require("./controllers/userController.js");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/requireAuth.js");
-const { default: mongoose } = require("mongoose");
 
 //create an express app
 const app = express();
@@ -25,6 +24,7 @@ app.use(
   cors({
     origin: true,
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
