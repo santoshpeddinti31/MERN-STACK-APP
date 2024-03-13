@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
     "Access-Control-Allow-Methods",
     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
   );
+  res.send("nodejs");
 });
 
 //connect to database
