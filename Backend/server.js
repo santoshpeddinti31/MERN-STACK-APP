@@ -14,6 +14,8 @@ const usersController = require("./controllers/userController.js");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/requireAuth.js");
 
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
 //configure express app
 app.use(express.json());
 app.use(cookieParser());
@@ -25,9 +27,17 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("nodejs");
-});
+app.use(
+  "/api",
+  createProxyMiddleware({
+    target: "http://localhost:3000/", //frontend url
+    changeOrigin: true,
+    //secure:false,
+    onProxyRes: function (proxyRes, req, res) {
+      proxyRes.headers["access-control-allow-origin"] = "*";
+    },
+  })
+);
 
 //connect to database
 connectToDb();
