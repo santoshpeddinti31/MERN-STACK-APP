@@ -7,7 +7,6 @@ if (process.env.NODE_ENV != "production") {
 //important dependencies
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const connectToDb = require("./config/connectToDb.js");
 const todosController = require("./controllers/controller.js");
 const usersController = require("./controllers/userController.js");
@@ -21,12 +20,13 @@ app.use(cookieParser());
 
 // frontend url : https://mern-stack-app-3bv6.vercel.app/
 
-app.use(
-  cors({
-    origin: "https://mern-stack-app-3bv6.vercel.app",
-    credentials: true,
-  })
-);
+const cors = require("cors");
+const corsOptions = {
+  origin: "https://mern-stack-app-3bv6.vercel.app",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 //connect to database
 async function connectDb() {
