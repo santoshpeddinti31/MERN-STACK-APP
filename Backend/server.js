@@ -28,9 +28,9 @@ app.use(
 );
 
 app.use(
-  "/api",
+  "/",
   createProxyMiddleware({
-    target: "http://localhost:3000/", //frontend url
+    target: "https://mern-stack-app-phi.vercel.app", //frontend url
     changeOrigin: true,
     //secure:false,
     onProxyRes: function (proxyRes, req, res) {
