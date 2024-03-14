@@ -18,9 +18,11 @@ const requireAuth = require("./middleware/requireAuth.js");
 app.use(express.json());
 app.use(cookieParser());
 
+// frontend url : https://mern-stack-app-3bv6.vercel.app/
+
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://mern-stack-app-3bv6.vercel.app"],
     credentials: true,
   })
 );
