@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://mern-stack-app-g8hp.vercel.app";
+axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);

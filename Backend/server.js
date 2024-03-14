@@ -14,28 +14,14 @@ const usersController = require("./controllers/userController.js");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/requireAuth.js");
 
-const { createProxyMiddleware } = require("http-proxy-middleware");
-
 //configure express app
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(
   cors({
-    origin: true,
+    origin: ["http://localhost:3000"],
     credentials: true,
-  })
-);
-
-app.use(
-  "/",
-  createProxyMiddleware({
-    target: "https://mern-stack-app-ashen.vercel.app", //frontend url
-    changeOrigin: true,
-    //secure:false,
-    onProxyRes: function (proxyRes, req, res) {
-      proxyRes.headers["access-control-allow-origin"] = "*";
-    },
   })
 );
 
