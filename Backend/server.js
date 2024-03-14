@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["https://mern-stack-app-3bv6.vercel.app"],
+    origin: "https://mern-stack-app-3bv6.vercel.app",
     credentials: true,
   })
 );
