@@ -13,6 +13,7 @@ const todosController = require("./controllers/controller.js");
 const usersController = require("./controllers/userController.js");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/requireAuth.js");
+const mongoose = require("mongoose");
 
 //configure express app
 app.use(express.json());
@@ -28,7 +29,16 @@ app.use(
 );
 
 //connect to database
-connectToDb();
+async function connectDb() {
+  try {
+    mongoose.set("strictQuery", false);
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("dB connected ...");
+  } catch (error) {
+    console.log(error);
+  }
+}
+connectDb();
 
 //Routing
 
