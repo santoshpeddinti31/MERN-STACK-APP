@@ -30,7 +30,7 @@ app.use(
 app.use(
   "/",
   createProxyMiddleware({
-    target: "https://mern-stack-app-phi.vercel.app", //frontend url
+    target: "https://mern-stack-app-ashen.vercel.app", //frontend url
     changeOrigin: true,
     //secure:false,
     onProxyRes: function (proxyRes, req, res) {
